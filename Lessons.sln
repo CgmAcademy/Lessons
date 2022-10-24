@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Class.Lesson", "Classes.Lesson\Class.Lesson.csproj", "{C936BB5C-C61F-42E0-8330-21C8BE41BC17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractInterface.Lesson", "AbstractInterface.Lesson\AbstractInterface.Lesson.csproj", "{870172AD-F086-4E4D-93D6-E879D94535E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractInterface.Lesson", "AbstractInterface.Lesson\AbstractInterface.Lesson.csproj", "{870172AD-F086-4E4D-93D6-E879D94535E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polimorfismo", "Polimorfismo\Polimorfismo.csproj", "{D88BA14C-95DD-4BAF-96F8-BBBA7C1EC47F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{870172AD-F086-4E4D-93D6-E879D94535E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{870172AD-F086-4E4D-93D6-E879D94535E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{870172AD-F086-4E4D-93D6-E879D94535E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D88BA14C-95DD-4BAF-96F8-BBBA7C1EC47F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D88BA14C-95DD-4BAF-96F8-BBBA7C1EC47F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D88BA14C-95DD-4BAF-96F8-BBBA7C1EC47F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D88BA14C-95DD-4BAF-96F8-BBBA7C1EC47F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

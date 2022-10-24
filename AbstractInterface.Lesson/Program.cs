@@ -6,13 +6,14 @@ namespace AbstractInterface.Lesson
     {
         static void Main(string[] args)
         {
-            Cerchio cerchio = new Cerchio();
+            Square cerchio = new Square();
                
         }
     } 
 
     public abstract class FiguraGeometrica
-    {   
+    {
+        public decimal Area; 
         public FiguraGeometrica()
         {
 
@@ -26,13 +27,14 @@ namespace AbstractInterface.Lesson
 
     public class Triangolo : FiguraGeometrica 
     {
+        public new decimal Area;
         public Triangolo() : base()
         {
 
         }
         public override void CalcArea() 
         {
-            Console.WriteLine(" Base * altezza / 2");
+            Console.WriteLine( Area);
 
         }
     }
@@ -45,29 +47,26 @@ namespace AbstractInterface.Lesson
         public override void CalcArea()
         {
             Console.WriteLine(" Lato *  Lato");
-
         }
     }
-
-
-    public interface MediaPlayer
+    public interface IMediaPlayer
     {
-        public int volume { get; set; }   
+        public int Volume { get; set; }   
         public void Play(); 
     } 
     public abstract class ElectronicItem { }
     public interface Phone { }
-    public class IPhone : ElectronicItem, MediaPlayer, Phone 
+    public class IPhone : ElectronicItem, IMediaPlayer, Phone 
     {
-        public int volume { get; set; }
+        public int Volume { get; set; }
         public void Play() 
         {
             Console.WriteLine("Apri Spotify, Premere il tasto Play"); 
         }
     }
-    public class Radio : ElectronicItem, MediaPlayer
+    public class Radio : ElectronicItem, IMediaPlayer
     {
-        public int volume { get; set; }
+        public int Volume { get; set; }
         public void Play() 
         {
             Console.WriteLine(" premi tasto ON");
