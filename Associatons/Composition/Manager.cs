@@ -1,21 +1,21 @@
 ﻿namespace Associatons.Composition
 {
-    public class Manager
+    public class Company
     {
-        public Project project;
+        public CEO _CEO;
         public decimal salary;
-        public Manager()
+        public Company(string ceo)
         {
-            project = new Project();
-        } 
-        public void IsAGoodManager(bool good)
-        {
-            if (good)
-            {
-                salary += 1000M;
-            }
-        }
+            _CEO = new CEO(ceo);
+        }        
 
+    } 
+    public class CEO 
+    {
+        public CEO(string Name)
+        {
+
+        }
     }
 }
 

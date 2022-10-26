@@ -2,6 +2,7 @@
 using System.Security.Cryptography.X509Certificates;
 using Associatons.Aggregation;
 using Associatons.Composition;
+using Manager = Associatons.Aggregation.Manager;
 
 namespace Associatons
 {
@@ -10,15 +11,16 @@ namespace Associatons
         static void Main(string[] args)
         {
             #region Aggregation
-            Manager Pelè = new Manager("CT");
-            Employee employee = new Employee(Pelè, "Pelè");
+            Manager Pelè = new Manager("CT"); /// DELETED
+            Employee employee = new Employee(Pelè, "Bruno");
 
-            Manager Maradonna = new Manager("CT");
-            employee.UpdateManager(Maradonna);
+            Manager Maradona = new Manager("CT");
+
+            employee.UpdateManager(Maradona);
             #endregion
 
             #region Compositon
-
+            Company company = new Company("Bruno"); 
             #endregion
 
         }

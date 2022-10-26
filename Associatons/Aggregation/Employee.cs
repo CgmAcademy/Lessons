@@ -4,15 +4,16 @@
     {
         Manager _manager;
         string name;
-        public Manager Manager { get; set; }
+        public Manager Manager { get; set; }// ---> Pelè
         public Employee(Manager manager, string Name)
         {
-            name = Name;
+             name = Name;
             _manager = manager;
             _manager.Employee = this;
         }
-        public void RemoveManager()
+         void RemoveManager()
         {
+            _manager = null;  
             _manager.Employee = null;
         }
         public void UpdateManager(Manager Manager)
