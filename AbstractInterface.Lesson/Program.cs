@@ -7,7 +7,9 @@ namespace AbstractInterface.Lesson
         static void Main(string[] args)
         {
             Square cerchio = new Square();
-               
+            EuroZoneCountry italy = new EuroZoneCountry();
+            italy.PopulationControl();
+
         }
     } 
 
@@ -72,6 +74,8 @@ namespace AbstractInterface.Lesson
             Console.WriteLine(" premi tasto ON");
 
         }
-    }
+    } 
+    
+
 }
 
