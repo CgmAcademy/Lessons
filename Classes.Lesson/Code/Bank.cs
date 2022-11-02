@@ -9,8 +9,8 @@ namespace Class.Lesson.Code
 {
     internal class Bank
     {
-        public Person Person { get; set; }
-        public Bank(Person person)
+        public Person Person { get; set; }  // Property pubblica
+        public Bank(Person person) // Costruttore 
         {
             Person = person;
             Person._name = "Marco";

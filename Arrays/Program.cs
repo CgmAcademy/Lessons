@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Arrays
 {
@@ -8,11 +9,20 @@ namespace Arrays
     {
 
 
+       
+
+
         static void Main(string[] args)
         {
 
-            // DichiarazioneDinamica();
-            Car.Elimina();
+            Car car = new Car("AUDI" , 5);
+            car.Add("Bruno");
+            car.Add("Marco");
+            car.Add("Anna");
+            car.Add("Elena");
+            car.Add("Antonio ");
+           
+            car.Remove("Anna"); // LIST<>
 
             //try
             //{
@@ -111,12 +121,48 @@ namespace Arrays
     }
     public class Car
     {
-        const int index = 5;
-        string nome;
+        
+        int counter = 0;
+        string[] _array; 
+        public string nome;
 
+        public Car(string Name, int Amount)
+        {
+             nome = Name;
+             _array=  new string[Amount] ;
+           
+        }
         public Car(string Name)
         {
-           nome= Name;    
+            nome = Name;
+          
+        }
+        public void Add(string name)
+        {  
+            if (counter < _array.Length)
+            {
+                _array[counter] = name;
+                 counter++;
+            } 
+          
+        }
+        public void Remove(string name)
+        {
+               int Index = Array.IndexOf(_array,name);
+               _array[Index] = null;// -> Reference Type
+
+            // string  ->> OBJECT 
+           //int[] 
+
+
+            bool[] bools = new bool[5];
+            //  bools[] ->> false
+            //  bools[] ->> false
+            //  bools[] ->> True
+            //  bools[] ->> false
+            //  bools[] ->> false
+
+
         }
         public static void CreateArray(int index)
         {
@@ -127,16 +173,16 @@ namespace Arrays
         public static void Elimina()
         {
             Car[] cars = new Car[10];
-            cars[0] = new Car("AUDI");
-            cars[1] = new Car("BMW");
+            cars[0] = new Car("AUDI",5);
+            cars[1] = new Car("BMW",5);
 
-              Car[] Result = cars.Where(i => i != null && !i.Equals("AUDI")).ToArray();
+              Car[] Result = cars.Where(i => !i.Equals("AUDI")).ToArray();
 
              var array1=  CopyArray(cars, Result); 
         } 
         public static Car[] CopyArray(Car[] src, Car[] dest)
         {
-            var newArray = new Car[src.Length];
+            var newArray = new Car[dest.Length];
 
             for (int i = 0; i < dest.Length; i++)
             {
@@ -144,7 +190,38 @@ namespace Arrays
             }
             return newArray; 
         }
+        public static void  AvoidNulls()
+        {
+            Car[] cars = new Car[10];
+            cars[0] = new Car("AUDI");
+            cars[1] = new Car("BMW");
+            //cars[2] == null; 
 
+            try
+            {
+                var result = cars.Where(i => i!=null &&  i.nome.Equals("AUDI")).ToArray();
+            //    for (int i = 0; i < cars.Length; i++)
+            //    {   
+            //        if(cars[i] != null)
+            //        {
+            //            cars[i].nome.Equals("AUDI");
+            //        }
+            //    }
+                 
+                foreach (var item in cars)
+                {
+                    Console.WriteLine(item.nome);
+                }
+
+            }
+            catch (NullReferenceException ex)
+            {
+
+                throw;
+            }
+
+            
+        }
     }
 
     

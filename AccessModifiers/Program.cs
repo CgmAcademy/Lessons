@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace AccessModifiers
 {
@@ -6,22 +7,29 @@ namespace AccessModifiers
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            CommecialBank Ingbank = new CommecialBank();
+            Ingbank.GetAccount("IT19415121258885"); 
+            Ingbank.Withdraw(100.00m, "IT19415121258885"); 
         }
     }
     public abstract class Bank
     {
-        protected string name;              
-        protected decimal debt;
-        protected decimal saldo;
-        public abstract decimal Saldo { get;  }   
-        public abstract decimal Debt();
-
+        public string name;
+        protected abstract decimal Debt();         
+       
+        //public decimal Withdraw(decimal amount, string accountNmb)
+        //{
+        //    Account account = new Account(accountNmb);
+        //    return account.Deposit(amount);
+        //}
+        
     }
     public class CentralBank : Bank
     {
-        public  override decimal Saldo { get { return Debt(); }  }
-        public sealed override decimal Debt()
+        protected decimal saldo;
+        protected decimal debt;
+      
+        protected sealed override decimal Debt()
         {
             return saldo - debt;
         }
@@ -29,32 +37,54 @@ namespace AccessModifiers
     public class CommecialBank : Bank
     {
         decimal interest;
-        public override decimal Saldo { get { return saldo + interest; }  }
-        public sealed override decimal Debt()
+        decimal debt;
+        int index = 0;
+        Account[] _acconts = new Account[3];
+        protected sealed override decimal Debt()
         {
-            return saldo - 1000.00M;
+            return  debt;
         }
-        private decimal CalcInterest()
+        decimal CalcInterest()
         {
-            return interest+= 1.0M;
+            return interest += 1.0M;
         }
-        public decimal Deposit(decimal amount)
+        public void GetAccount(string AccountNmbr)
         {
-            return saldo += amount;
+            if (index < _acconts.Length)
+                _acconts[index] = new Account(AccountNmbr);
+
         }
-        public decimal WithDraw(decimal amount)
+        public decimal Withdraw(decimal amount, string accountNmb)
         {
-            return saldo -= amount;
+            Account account = _acconts.Where(i => i._accountNmb == accountNmb).FirstOrDefault();
+            return account.Deposit(amount);
         }
+        class Account
+        {
+            public decimal debt;
+            public decimal saldo;
+            public string _accountNmb;
+            public Account(string accountNmb)
+            {
+                _accountNmb = accountNmb;
+            }
+            public decimal Deposit(decimal amount)
+            {
+                return saldo += amount;
+            }
+            public decimal Withdraw(decimal amount)
+            {
+                return saldo -= amount;
+            }
+        }
+       
     }
     public class EuroCentralBank : CentralBank
-    {    
-
-      //  public override string Debt() { }
+    {
+       // protected override string Debt() { }
     }
     public class FEDCentralBank : CentralBank
     {
-        public override decimal Saldo { get { return saldo; } }
 
        // public override string Debt() { }
     }

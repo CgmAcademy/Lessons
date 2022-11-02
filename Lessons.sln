@@ -3,15 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectsClass", "Classes.Lesson\ObjectsClass.csproj", "{C936BB5C-C61F-42E0-8330-21C8BE41BC17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectsAndClasses", "Classes.Lesson\ObjectsAndClasses.csproj", "{C936BB5C-C61F-42E0-8330-21C8BE41BC17}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractInterface", "AbstractInterface.Lesson\AbstractInterface.csproj", "{870172AD-F086-4E4D-93D6-E879D94535E3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Polimorfismo", "Polimorfismo\Polimorfismo.csproj", "{D88BA14C-95DD-4BAF-96F8-BBBA7C1EC47F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Associatons", "Associatons\Associatons.csproj", "{91B5A8E9-3CE4-4132-A50F-0A9BFAB097E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Associatons", "Associatons\Associatons.csproj", "{91B5A8E9-3CE4-4132-A50F-0A9BFAB097E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessModifiers", "AccessModifiers\AccessModifiers.csproj", "{BAB2EEAA-196C-404E-A1C0-EF464AFA53CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessModifiers", "AccessModifiers\AccessModifiers.csproj", "{BAB2EEAA-196C-404E-A1C0-EF464AFA53CB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryManagement", "MemoryManagement\MemoryManagement.csproj", "{62053F4E-4183-4C5C-BD6F-DCC8A14784DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arrays", "Arrays\Arrays.csproj", "{4F330621-C34B-42C0-8320-AB60499C68F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DateTimeManagement", "Date\DateTimeManagement.csproj", "{010F755D-4BBD-4D9D-97A4-09AF8EF805C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{BAB2EEAA-196C-404E-A1C0-EF464AFA53CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAB2EEAA-196C-404E-A1C0-EF464AFA53CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAB2EEAA-196C-404E-A1C0-EF464AFA53CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62053F4E-4183-4C5C-BD6F-DCC8A14784DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62053F4E-4183-4C5C-BD6F-DCC8A14784DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62053F4E-4183-4C5C-BD6F-DCC8A14784DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62053F4E-4183-4C5C-BD6F-DCC8A14784DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F330621-C34B-42C0-8320-AB60499C68F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F330621-C34B-42C0-8320-AB60499C68F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F330621-C34B-42C0-8320-AB60499C68F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F330621-C34B-42C0-8320-AB60499C68F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{010F755D-4BBD-4D9D-97A4-09AF8EF805C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{010F755D-4BBD-4D9D-97A4-09AF8EF805C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{010F755D-4BBD-4D9D-97A4-09AF8EF805C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{010F755D-4BBD-4D9D-97A4-09AF8EF805C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,7 @@
     {
         Manager _manager;
         string name;
-        public Manager Manager { get; set; }// ---> Pelè
+        public Manager Manager { get; set; }
         public Employee(Manager manager, string Name)
         {
              name = Name;
@@ -13,8 +13,9 @@
         }
          void RemoveManager()
         {
-            _manager = null;  
             _manager.Employee = null;
+            _manager = null;
+
         }
         public void UpdateManager(Manager Manager)
         {
