@@ -8,8 +8,29 @@ namespace Date
         static void Main(string[] args)
         {
             //  DateTime currentTime = DateTime.Now;
-            CreateTimeSpan();
+            CalcEta();
         } 
+
+
+        public static void CalcEta() 
+        {  
+            DateTime mybirth = new DateTime(1982, 11, 04);
+                int birthday = mybirth.Day;
+                int birthMonth = mybirth.Month;
+                int birhYear = mybirth.Year;
+                int age =  DateTime.Now.Year - birhYear; //40
+
+           
+            if(age >= 40 && DateTime.Now.Month >= birthMonth && DateTime.Now.Day >= birthday )
+            {
+                Console.WriteLine("E maggiorenne!");
+            }
+            else
+            {
+                Console.WriteLine($"Non sei maggionrenne perche hai ancora {age-1}");
+            }
+            
+        }
         public static void getTime()
         {
             Console.WriteLine(DateTime.Now.ToLocalTime());
@@ -27,7 +48,6 @@ namespace Date
             Console.WriteLine("Los Agenles: {0}", 
                 TimeZoneInfo.ConvertTimeBySystemTimeZoneId(currentTime, "Pacific Standard Time"));
         } 
-
         public static void TimezonesList(DateTime currentTime)
         {
             Console.WriteLine("Los Angeles: {0}",
@@ -47,8 +67,6 @@ namespace Date
             Console.WriteLine("Tokyo: {0}",
                               TimeZoneInfo.ConvertTimeBySystemTimeZoneId(currentTime, TimeZoneInfo.Local.Id, "Tokyo Standard Time"));
         } 
-
-
         public static void GetdateFromInput()
         {
             Console.WriteLine("Inserire una  data: ");
@@ -94,7 +112,6 @@ namespace Date
             }
 
         } 
-
         public static void CreateDayOfWeek()
         {
             DateTime birthday = new DateTime(1982,01,14);  
@@ -140,7 +157,6 @@ namespace Date
             Console.WriteLine(dateInIT);
             Console.WriteLine(dateInDE);
         } 
-
         public static void CreateTimeSpan()
         {
             TimeSpan timeSpan = new TimeSpan(30,0,0,0);
