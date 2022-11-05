@@ -6,21 +6,28 @@ namespace StreamingPlayer
     {
         protected MediaFile playing;
         protected MediaFile[] files;
-       
+        public bool isPlaying; 
         public virtual void Play(int MediaIndex)
         {
 
             if (MediaIndex >= 0 && MediaIndex <= files.Length - 1)
             {
                 playing = files[MediaIndex];
-                playing.position = MediaIndex + 1;
+                playing.position = MediaIndex + 1; 
+                isPlaying = true;
+                ShowPlaying();
+
             }
             else
             {
-                playing = files[0];  // Non fa andare piu indietro della prima traccia !
-                playing.position = 1;
+                Console.ForegroundColor = ConsoleColor.Red; 
+                Console.WriteLine($" brano nuemero {MediaIndex + 1} non presente nel catalogo.");
+                //playing = files[0];  // Non fa andare piu indietro della prima traccia !
+                //playing.position = 1;
+                Console.ResetColor();
+                isPlaying = false;
             }
-            ShowPlaying();
+           
         }
         public virtual void StartPlaying()
         {

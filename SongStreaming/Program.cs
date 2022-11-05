@@ -7,14 +7,14 @@ namespace StreamingPlayer
 {
     internal class Program
     {
-        static void Main(string[] args)
-        {
-            StreamingPlatform streamingPlatform = null;  ;  
-            Console.Write("Per inizare un brano premi 'M', per iniziare un film premi 'V' ");
-         
-            var input = char.ToUpper(Console.ReadKey().KeyChar);
+    static void Main(string[] args)
+    {
+        StreamingPlatform streamingPlatform = null;
+       
+        Console.Write("Per inizare un brano premi 'M', per iniziare un film premi 'V' :  ");
+        Console.WriteLine("");
 
-
+        var input = char.ToUpper(Console.ReadKey().KeyChar);
 
             if (input == 'M')
             {
@@ -25,16 +25,25 @@ namespace StreamingPlayer
             {
                 streamingPlatform = new Netflix(); 
             }
-                
-              
+                do
+                {
+                    Console.WriteLine("");
                     Console.WriteLine("------------------");
-                       streamingPlatform.ListSongs();
+                    streamingPlatform.ListSongs();
+
                     Console.WriteLine("------------------");
                     Console.WriteLine("select Sogno number: ");
-                    var i = CharUnicodeInfo.GetDecimalDigitValue(Console.ReadKey().KeyChar);
-                       streamingPlatform.Play(i - 1);
+                    input = char.ToUpper(Console.ReadKey().KeyChar);
+                    Console.WriteLine(); 
+                     if(input == 'E')
+                          return;
+
+                    var inputNumber = CharUnicodeInfo.GetDecimalDigitValue(input);
+                     streamingPlatform.Play(inputNumber - 1);
                     Console.WriteLine("------------------");
-                    Console.WriteLine("                   ");
+                    Console.WriteLine("");
+                } while (!streamingPlatform.isPlaying);
+                   
 
                     do
                     {
@@ -47,7 +56,8 @@ namespace StreamingPlayer
                         Console.WriteLine("For Exit press E: ");
 
                         input = char.ToUpper(Console.ReadKey().KeyChar);
-
+                        if (input == 'E')
+                            return;
                         Console.WriteLine();
 
                         switch (input)
