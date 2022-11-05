@@ -63,6 +63,7 @@ namespace StreamingPlayer
                         input = char.ToUpper(Console.ReadKey().KeyChar);
                         if (input == 'E')
                             return;
+
                         Console.WriteLine();
 
                         switch (input)
@@ -70,16 +71,26 @@ namespace StreamingPlayer
                             case 'F':
                         streamingPlatform.Forward();
                                 break;
+
                             case 'B':
                         streamingPlatform.Backward();
                                 break;
+
                             case 'S':
                         streamingPlatform.Stop();
                                 break;
+
                             case 'P':
                         streamingPlatform.Pause();
                                 break;
-                        }
+                            default:
+                          Console.BackgroundColor = ConsoleColor.Red; 
+                          Console.ForegroundColor = ConsoleColor.Black;
+                          Console.WriteLine("Scelta non valida!");
+                          Console.ResetColor(); 
+                                break; 
+                        } 
+                     
 
                     } while (input != 'E');
                 

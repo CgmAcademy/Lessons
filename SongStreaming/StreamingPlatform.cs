@@ -69,7 +69,6 @@ namespace StreamingPlayer
             {
                 Console.WriteLine($"{i + 1} -   {files[i].title} ");
             }
-
         }
 
 
@@ -134,6 +133,7 @@ namespace StreamingPlayer
         public static int Carousel(int ArrayLenght, int Input)
         {
             int result = 0;
+
             if (Input < 0)
             {
                 result = ArrayLenght - 1;
@@ -144,7 +144,7 @@ namespace StreamingPlayer
             }
             else
             {
-                result= Input; 
+                result = Input; 
             }
              return result;
             
