@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace StreamingPlayer
 {
@@ -6,28 +7,18 @@ namespace StreamingPlayer
     {
         protected MediaFile playing;
         protected MediaFile[] files;
-        public bool isPlaying; 
+        public bool isPlaying;
+        public int totalTacks;
+        public StreamingPlatform()
+        {
+            
+        }
         public virtual void Play(int MediaIndex)
         {
-
-            if (MediaIndex >= 0 && MediaIndex <= files.Length - 1)
-            {
                 playing = files[MediaIndex];
-                playing.position = MediaIndex + 1; 
+                playing.position = MediaIndex + 1;
                 isPlaying = true;
                 ShowPlaying();
-
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red; 
-                Console.WriteLine($" brano nuemero {MediaIndex + 1} non presente nel catalogo.");
-                //playing = files[0];  // Non fa andare piu indietro della prima traccia !
-                //playing.position = 1;
-                Console.ResetColor();
-                isPlaying = false;
-            }
-           
         }
         public virtual void StartPlaying()
         {
@@ -42,8 +33,8 @@ namespace StreamingPlayer
         }
         public virtual void ShowPlaying()
         {
-            Console.BackgroundColor = ConsoleColor.Yellow; // Cambio il colore di sfondo della riga a video
-            Console.ForegroundColor = ConsoleColor.Blue; // Cambio il colore del  test  della riga a video
+            Console.ForegroundColor = ConsoleColor.Black; // Cambio il colore di sfondo della riga a video
+            Console.BackgroundColor = playing.Color; // Cambio il colore del  test  della riga a video
             Console.WriteLine($"Playing now : - Postion: {playing.position} - {playing.title.ToUpper()}");
             Console.ResetColor();
 
@@ -63,12 +54,14 @@ namespace StreamingPlayer
         public virtual void Forward()
         {
             int next = Array.FindIndex(files, i => i.title == playing.title);
-            Play(next + 1);
+            int track = Utility.Carousel(files.Length,next +1);           
+            Play(track);
         }
         public virtual void Backward()
         {
             int next = Array.FindIndex(files, i => i.title == playing.title);
-            Play(next - 1);
+            int track = Utility.Carousel(files.Length, next - 1);
+            Play(track);
         }
         public virtual void ListSongs()
         {
@@ -87,6 +80,8 @@ namespace StreamingPlayer
             public MediaState state = MediaState.Paused;
             public bool rated;
             public int position;
+            public ConsoleColor Color; 
+             
             public MediaFile()
             {              
             }
@@ -113,6 +108,47 @@ namespace StreamingPlayer
 
             }
         }
+      
+    }
+    static class Utility
+    {
 
+        static Utility()
+        {
+        }
+        public static bool CheckInput(int ArrayLenght, int Input)
+        {
+            if (Input >= 0 && Input <= ArrayLenght - 1)
+            {
+                return true;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($" brano nuemero {Input} non presente nel catalogo.");                
+                Console.ResetColor();
+                return false;
+            }
+        }
+
+        public static int Carousel(int ArrayLenght, int Input)
+        {
+            int result = 0;
+            if (Input < 0)
+            {
+                result = ArrayLenght - 1;
+            }
+            else if (Input > ArrayLenght -1)
+            {
+                return result = 0;
+            }
+            else
+            {
+                result= Input; 
+            }
+             return result;
+            
+        }     
+        
     }
 }

@@ -34,15 +34,20 @@ namespace StreamingPlayer
                     Console.WriteLine("------------------");
                     Console.WriteLine("select Sogno number: ");
                     input = char.ToUpper(Console.ReadKey().KeyChar);
+  
                     Console.WriteLine(); 
                      if(input == 'E')
                           return;
 
                     var inputNumber = CharUnicodeInfo.GetDecimalDigitValue(input);
-                     streamingPlatform.Play(inputNumber - 1);
-                    Console.WriteLine("------------------");
-                    Console.WriteLine("");
-                } while (!streamingPlatform.isPlaying);
+
+                    if(Utility.CheckInput(streamingPlatform.totalTacks, inputNumber))
+                    {
+                        streamingPlatform.Play(inputNumber - 1);
+                    }
+                     Console.WriteLine("------------------");
+                     Console.WriteLine("");
+                  } while (!streamingPlatform.isPlaying);
                    
 
                     do

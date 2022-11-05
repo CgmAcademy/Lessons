@@ -11,6 +11,8 @@
                 new NetflixVideo(){ title ="Avatar"}
 
                 };
+
+            totalTacks = files.Length;
         }
         private class NetflixVideo : Video
         {
