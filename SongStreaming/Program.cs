@@ -32,7 +32,7 @@ namespace StreamingPlayer
                     streamingPlatform.ListSongs();
 
                     Console.WriteLine("------------------");
-                    Console.WriteLine("select Sogno number: ");
+                    Console.WriteLine("select Song number: ");
                     input = char.ToUpper(Console.ReadKey().KeyChar);
   
                     Console.WriteLine(); 

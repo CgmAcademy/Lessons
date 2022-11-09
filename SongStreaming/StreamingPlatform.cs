@@ -54,7 +54,7 @@ namespace StreamingPlayer
         public virtual void Forward()
         {
             int next = Array.FindIndex(files, i => i.title == playing.title);
-            int track = Utility.Carousel(files.Length,next +1);           
+            int track = Utility.Carousel(files.Length, next +1);           
             Play(track);
         }
         public virtual void Backward()
@@ -70,8 +70,6 @@ namespace StreamingPlayer
                 Console.WriteLine($"{i + 1} -   {files[i].title} ");
             }
         }
-
-
         protected class MediaFile
         {
             public int id;
@@ -111,7 +109,6 @@ namespace StreamingPlayer
     }
     static class Utility
     {
-
         static Utility()
         {
         }
@@ -132,7 +129,7 @@ namespace StreamingPlayer
 
         public static int Carousel(int ArrayLenght, int Input)
         {
-            int result = 0;
+            int result;
 
             if (Input < 0)
             {
