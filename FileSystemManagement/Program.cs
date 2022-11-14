@@ -31,7 +31,7 @@ namespace FileSystemManagement
         }
         static void SpecialDirectory()
         {
-            string SpecialDir = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            string SpecialDir = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             Console.WriteLine(SpecialDir);
         }
         static void SplitPath()
