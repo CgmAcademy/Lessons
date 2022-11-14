@@ -18,13 +18,29 @@ namespace Dictionaries
             myDictionary[CRYPTO.BTC].Add("Hai Effettuato la transazione di 1000 EURO");
             myDictionary[CRYPTO.BTC].Add("Hai Effettuato la transazione di 200 EURO");
 
-            myDictionary[CRYPTO.ETH].Add("Hai Effettuato la transazione di 5000 EURO");
-            myDictionary[CRYPTO.ETH].Add("Hai Effettuato la transazione di 50 EURO");
+            //myDictionary[CRYPTO.ETH].Add("Hai Effettuato la transazione di 5000 EURO");
+            //myDictionary[CRYPTO.ETH].Add("Hai Effettuato la transazione di 50 EURO");
 
-            foreach (var item in myDictionary[CRYPTO.BTC]) // KEY + VALUE
+            foreach (var item in myDictionary.Keys) // KEY + VALUE
             {
                 Console.WriteLine(item);
             }
+
+            if (myDictionary.ContainsKey(CRYPTO.BTC)) 
+            {
+                Console.WriteLine($"ETH is { true}");
+
+            }
+            if (myDictionary.ContainsKey(CRYPTO.ETH))
+            {
+                Console.WriteLine($"ETH is { true}");
+
+            }
+            else
+            {
+                Console.WriteLine($"ETH is { false}");
+            }
+
 
 
             Dictionary<string, Dictionary<ACCOUNT,List<string>>> banca = 
@@ -50,6 +66,8 @@ namespace Dictionaries
             {
                 Console.WriteLine(item);
             }
+
+            
 
         }
     } 
