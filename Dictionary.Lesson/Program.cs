@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Dictionaries
 {
@@ -11,7 +12,9 @@ namespace Dictionaries
 
             Dictionary<CRYPTO, List<string>> myDictionary = new Dictionary<CRYPTO, List<string>>();
             myDictionary.Add(CRYPTO.BTC, new());
-            // myDictionary.Add(CRYPTO.ETH, new());
+            myDictionary.Add(CRYPTO.ETH, new());
+
+            ReadOnlyDictionary<CRYPTO, List<string>> myDictionary2 = new(myDictionary);   
 
 
 
@@ -21,17 +24,17 @@ namespace Dictionaries
             //myDictionary[CRYPTO.ETH].Add("Hai Effettuato la transazione di 5000 EURO");
             //myDictionary[CRYPTO.ETH].Add("Hai Effettuato la transazione di 50 EURO");
 
-            foreach (var item in myDictionary.Keys) // KEY + VALUE
+            foreach (var item in myDictionary2.Keys) // KEY + VALUE
             {
                 Console.WriteLine(item);
             }
 
-            if (myDictionary.ContainsKey(CRYPTO.BTC)) 
+            if (myDictionary2.ContainsKey(CRYPTO.BTC)) 
             {
                 Console.WriteLine($"ETH is { true}");
 
             }
-            if (myDictionary.ContainsKey(CRYPTO.ETH))
+            if (myDictionary2.ContainsKey(CRYPTO.ETH))
             {
                 Console.WriteLine($"ETH is { true}");
 

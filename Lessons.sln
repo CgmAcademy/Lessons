@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListAndArrayList", "ListAnd
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dictionaries", "Dictionary.Lesson\Dictionaries.csproj", "{424D77E7-B3D9-4EC8-BE5B-D2803E07B676}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics", "Generics\Generics.csproj", "{E89FAA5C-91C6-493F-A75F-C288ECD526FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{424D77E7-B3D9-4EC8-BE5B-D2803E07B676}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{424D77E7-B3D9-4EC8-BE5B-D2803E07B676}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{424D77E7-B3D9-4EC8-BE5B-D2803E07B676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E89FAA5C-91C6-493F-A75F-C288ECD526FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E89FAA5C-91C6-493F-A75F-C288ECD526FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E89FAA5C-91C6-493F-A75F-C288ECD526FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E89FAA5C-91C6-493F-A75F-C288ECD526FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
