@@ -97,24 +97,48 @@ namespace GenericsLesson
         }
         public static List<T> LoadFromTextFile<T>(string filePath) where T : class, new()
         {
-            List<T> output = new List<T>(); // Crea una lista nella quale inserirò tutti  gli oggetti di tipo  T che andrò a creare partendo dai dati del CSV
+            var lines = System.IO.File.ReadAllLines(filePath).ToList(); 
+            List<T> output = new List<T>(); 
+            T entry = new T(); 
+            var cols = entry.GetType().GetProperties();
 
-            var lines = System.IO.File.ReadAllLines(filePath).ToList(); // --> Estrago tutte le righe dal file
-            T entry = new T(); // Creo un oggetto vuoto del tipo che ho T, che servirà come variabile d'appoggio da popolare con i dati.  
-            var cols = entry.GetType().GetProperties();// ->> Estrago i nomi delle proprietà dell'oggetto (rappresenteranno  le colonne). 
+          
+            if (lines.Count < 2)
+            {
+                throw new IndexOutOfRangeException("The file was either empty or missing.");
+            }
 
-            //foreach () // Ciclare tutte le righe del file CSV
-            //{
-            // entry = new T(); // Creare un nuova istanza dell'oggetto che verrà usato per essere valorizzato (le proprietà) con  i valori della riga 
-            // var valoriRiga = splitare  i valori della riga del file separati in modo da create un array          
+            // Splits the header into one column header per entry
+            var headers = lines[0].Split(',');
 
 
-            // ciclare ogni singola colonna del file csv in modo da poter fare un confronto con le proprietà dell'oggetto entry                        
-            // --> Controllare che ci sia un Match tra la colonna ,
-            // --> Se c'è il Match, valorizzare quella proprietà dell'oggetto con il valore della [cella] che corrisponde alla [riga/colonna].  
-            /// -->  entry.property.SetValue([oggetto], Convert.ChangeType(valoreCella, entry.property.PropertyType));
-            /// output.Add(entry);
-            // }
+            lines.RemoveAt(0); // Rimuovi la prima riga che raprensenta il HEADER
+
+            foreach (var row in lines)
+            {
+                entry = new T();
+                var vals = row.Split(',');
+                for (var i = 0; i < headers.Length; i++)
+                {
+                    foreach (var col in cols)// per ogni header ( rapresenta proprità che mi aspetto), 
+                    {
+                        if (col.Name == headers[i]) // confronto le proprietà dell'oggetto con i headers
+                        {   
+                            // estrai il valore  dalla riga del file che  si trova nella stessa colonna in cui l'index del header fa riferimento 
+                            var valore  =  vals[i];
+
+                            //Converto il valore da stringa al Type della proprietà dell'oggetto entry
+                            var ConvertedValue = Convert.ChangeType(valore, col.PropertyType);
+
+                            // Setto il valore convertito  passandolo direttamente  alla proprietà
+                            col.SetValue(entry, ConvertedValue);
+                        }
+                    }
+                }
+
+                output.Add(entry);// ->  aggiungi oggetto apenna creato alla lista 
+            }
+
             return output;
         }
     }
