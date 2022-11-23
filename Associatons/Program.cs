@@ -24,8 +24,8 @@ namespace Associatons
             //Company company = new Company("Bruno"); 
             //#endregion
             Pease italia = new Pease();
-            Regione veneto = new Regione();
-            veneto.pease.name;
+            //Regione veneto = new Regione();
+            //veneto.pease.name;
         }
     }  
 

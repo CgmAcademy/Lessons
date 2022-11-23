@@ -13,7 +13,14 @@ namespace Exception.Lesson
             }
             catch (System.Exception ex)
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+                Console.ResetColor();
+
+                Console.ForegroundColor = ConsoleColor.Red;               
+                Console.WriteLine(ex.StackTrace);
+                Console.ResetColor();
             }          
         }
         static void Order(int order)
@@ -22,16 +29,22 @@ namespace Exception.Lesson
             {
                 Payment(8);
                // ConfirmOrder();// non esesguito
-            }            
+            }
+
+            catch (System.DivideByZeroException ex)
+            {
+                Console.WriteLine("Guarda che stai cercando di dividere per 0");
+                throw;
+            }
             //catch (System.Exception ex)
             //{
-            //    
+                
             //}
             finally
             {
-                Console.ForegroundColor = ConsoleColor.Red;
+              //  Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Close DB connection");
-                Console.ResetColor();               
+              //  Console.ResetColor();               
             }
             // Se inserisco un Catch dopo il finally continua l'esezuzione fino alla fine metodo
             Console.WriteLine("statement 1");
@@ -40,10 +53,10 @@ namespace Exception.Lesson
             Console.WriteLine("statement 4");
            
         }
-        static int Payment(decimal number)
+        static decimal Payment(decimal number)
         {
-           // decimal result = number / 0; 
-            throw new System.Exception("Problema inserimento ordine element! "); 
+            return number;
+
         }
         static void ConfirmOrder()
         {

@@ -14,7 +14,7 @@ namespace Classes.Lesson
 
         public abstract class FiguraGeomertrica
         {
-            FiguraGeomertrica figuraGeomertrica = 
+            FiguraGeomertrica figuraGeomertrica; 
             public abstract void getArea();  
             public FiguraGeomertrica(string figuraGeomertrica) { }
         }

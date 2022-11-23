@@ -33,10 +33,10 @@ namespace AccessModifiers
         protected decimal saldo;
         protected decimal debt;
 
-        protected override decimal Debt() // Errore -> non è possibile fare l'overrride di Sealed
-        {
-            return saldo - debt;
-        }
+        //protected override decimal Debt() // Errore -> non è possibile fare l'overrride di Sealed
+        //{
+        //    return saldo - debt;
+        //}
     }
 
     public class CommecialBank : Bank
@@ -62,7 +62,8 @@ namespace AccessModifiers
         public void Withdraw(decimal amount, string accountNmb)
         {
             Account account1 = new Account(accountNmb);
-            _acconts[0] = account1;
+        }
+           // _acconts[0] = account1;
               
            // int index = Array.FindIndex(_acconts, row =>  row != null && row._accountN == accountNmb );
             //  Account account = _acconts.Where(i => i._accountN == accountNmb).FirstOrDefault();

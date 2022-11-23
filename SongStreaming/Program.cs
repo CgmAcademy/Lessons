@@ -9,8 +9,7 @@ namespace StreamingPlayer
     {
     static void Main(string[] args)
     {
-        StreamingPlatform streamingPlatform = null;
-       
+        StreamingPlatform streamingPlatform = null;       
         Console.Write("Per inizare un brano premi 'M', per iniziare un film premi 'V' :  ");
         Console.WriteLine("");
 
@@ -19,7 +18,6 @@ namespace StreamingPlayer
             if (input == 'M')
             {
                 streamingPlatform = new Spotify();
-
             }
             else
             {
@@ -47,9 +45,7 @@ namespace StreamingPlayer
                     }
                      Console.WriteLine("------------------");
                      Console.WriteLine("");
-                  } while (!streamingPlatform.isPlaying);
-                   
-
+                  } while (!streamingPlatform.isPlaying);  
                     do
                     {
                         Console.WriteLine("Next  press F: ");
@@ -92,8 +88,7 @@ namespace StreamingPlayer
                         } 
                      
 
-                    } while (input != 'E');
-                
+                    } while (input != 'E');                
             }
            
     }
