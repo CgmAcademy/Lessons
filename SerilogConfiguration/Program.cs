@@ -24,13 +24,18 @@ namespace SerilogConfiguration
                     .CreateLogger();
 
                 Log.Logger.Information("Logger started....");
+
+                Log.Logger.Warning("Logger ended! ");
+
             }
             catch (Exception ex)
-            { 
-
+            {
                 throw;
             }
-            Log.Logger.Warning("Logger ended! ");
+            finally
+            {
+                Log.CloseAndFlush(); 
+            }
 
         }
         static void BuildConfig(IConfigurationBuilder configurationBuilder)
@@ -69,7 +74,7 @@ namespace SerilogConfiguration
             {
                 for (int i = 0; i < _configuration.GetValue<int>("LoopNumber"); i++)
                 {
-                    _logger.LogInformation($" Run number {i}"); 
+                    _logger.LogInformation($" ====> Run number {i}"); 
                 }
             }
             catch (Exception ex )
