@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LinqLesson;
+using System;
 
 namespace LinqToObjects
 {
@@ -6,7 +7,10 @@ namespace LinqToObjects
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            SelectStatement.CreateStructure();
+
         }
-    }
+    } 
+
+
 }
