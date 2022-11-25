@@ -123,8 +123,7 @@ namespace LinqLesson
                                                  // .Distinct()
                                                  .ToList());
 
-            System.Console.WriteLine("Ciao");
-            System.Console.WriteLine("Ciao from Ioc");
+           
 
         }
     }
