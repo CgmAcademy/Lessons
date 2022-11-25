@@ -51,6 +51,23 @@ namespace LinqLesson
 
             }
         }
+        internal static void InlineQuery(string Provincia)
+        {
+            comuni
+                 .Where(c => c.Provincia == Provincia)
+                     .Select(i => new { i.Regione, i.Provincia })
+                     .Distinct()
+                     .OrderByDescending(i => i.Regione)
+                     .ToList()
+                     .ForEach(c =>
+                     {
+                         Console.Write(c.Provincia);
+                         Console.Write("//");
+                         Console.WriteLine(c.Regione);
+
+                     });
+                    
+        }
         internal static void SelectTupleByComune(string Provincia)
         {
             List<(string Regione, int Abitanti)> result =
