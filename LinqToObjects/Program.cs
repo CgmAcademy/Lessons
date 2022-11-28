@@ -7,7 +7,7 @@ namespace LinqToObjects
     {
         static void Main(string[] args)
         {
-            SelectStatement.CreateStructure();
+            NestedGroupJoin.JoinTables();
 
         }
     } 

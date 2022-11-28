@@ -91,6 +91,7 @@ namespace LinqLesson
                               Group = group.Key,
                               Total = group.Sum(a => a.abitanti).ToString(),
                               Count = group.Count()
+                           
                           })
                          .OrderBy(x => x.Group))
             {
@@ -104,6 +105,9 @@ namespace LinqLesson
         }
         internal static void CreateStructure()
         {
+
+            Dictionary<string, Dictionary<string, List<Comune>>> regione = new Dictionary<string, Dictionary<string, List<Comune>>>(); 
+
             var ProvinceDict = (from c in comuni
                                 group c by c.Provincia // if Provincia are 5 it will return  5 Groups  of  item
                               into cg  // put the Groups into a where table Key Field  is the "grouped by" Field
@@ -123,9 +127,13 @@ namespace LinqLesson
                                                  // .Distinct()
                                                  .ToList());
 
-           
+
+
 
         }
+
+
+
     }
 
 }
