@@ -59,7 +59,7 @@ namespace ProjectConfiguration
         }
         public void SendMail(string Msg)
         {   
-            _Server.SendMail($"Sending mail with \n {_Server._SMTP} and {_Server._POP} !");
+            _Server.SendMail($"Sending mail with \n --> {_Server._SMTP} and {_Server._POP} !");
         }
         class  Server
         {
@@ -72,7 +72,7 @@ namespace ProjectConfiguration
             }
             public void SendMail(string Msg)
             {
-               /// Console.WriteLine($"Sending mail {Msg}"); 
+               Console.WriteLine($"{Msg}"); 
             }
         }
     }
