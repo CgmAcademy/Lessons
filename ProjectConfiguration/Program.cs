@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,29 +11,30 @@ namespace ProjectConfiguration
         static void Main(string[] args)
         {
 
-            //Settings settings = new Settings();
-            //settings.POP = "pop3.libero.it";
-            //settings.SMTP = "smtp.libero.it";
-            //EmailService.SendMail(settings.SMTP, settings.POP); 
-
+      
+            var services = new ServiceCollection();    
             IConfiguration config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            Settings settings = config.GetRequiredSection("settings").Get<Settings>();
-            Console.WriteLine(settings.POP);
-            Console.WriteLine(settings.SMTP);
-            EmailService.SendMail(settings.SMTP, settings.POP);
+            config.Bind("settings");  // binding here 
+            services.AddSingleton<IConfiguration>(config);// Add DI for IConfiguration 
+            services.AddSingleton<Settings>(); // Add Settings as Singleton
+            var serviceProvider = services.BuildServiceProvider();    
+            var receiver = serviceProvider.GetService<Settings>(); // Get class as a Service 
 
+            receiver.GetName(); // Call  Service 
+            
+          
         }
 
     }
-    static class EmailService
+     class EmailService
     {
         static Server _Server;
         
-        public static void ConfigureMail(string SMTP, string POP)
+        public void ConfigureMail(IConfiguration configuration)
         {
-            _Server = new Server(SMTP, POP);
+           // _Server = new Server(settings.SMTP, settings.POP);
         }
-        public static void SendMail(string Msg, string POP)
+        public void SendMail(string Msg)
         {
             _Server.SendMail("Hello world!");
         }
@@ -51,10 +53,26 @@ namespace ProjectConfiguration
             }
         }
     }
-    public class Settings
+    interface ISettings
+    {
+
+    }
+    public class Settings : ISettings
     {
         public string SMTP { get; set; }
         public string POP { get; set; }
+        public Settings(IConfiguration config)
+        {
+            SMTP = config.GetValue<string>("settings:SMTP");   
+            POP = config.GetValue<string>("settings:POP"); 
+        } 
+        public void GetName()
+        {
+            Console.WriteLine($"SMTP: {SMTP}");
+            Console.WriteLine($"POP: {POP}");
+        }
+        
+        
     }
 }
 
