@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,23 @@ namespace ProjectConfiguration
       
             var services = new ServiceCollection();    
             IConfiguration config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            config.Bind("settings");  // binding here 
-            services.AddSingleton<IConfiguration>(config);// Add DI for IConfiguration 
-            services.AddSingleton<Settings>(); // Add Settings as Singleton
-            var serviceProvider = services.BuildServiceProvider();    
-            var receiver = serviceProvider.GetService<Settings>(); // Get class as a Service 
 
-            receiver.GetName(); // Call  Service 
+
+            services.AddSingleton<Settings>(); // Add Settings as Singleton
+            services.AddTransient<EmailService>(); // Add Settings as Singleton
+
+            //config.Bind("mail");  // binding here 
+            //config.Bind("social");
+            //services.AddSingleton<IConfiguration>(config); // Add DI for IConfiguration as Singleton
+
+            OptionsConfigurationServiceCollectionExtensions
+              .Configure<Settings>(services, config.GetSection("settings"));
+
+
+            var serviceProvider = services.BuildServiceProvider();    
+            var receiver = serviceProvider.GetService<EmailService>(); // Get class as a Service 
+
+            receiver.SendMail(""); // Call  Service  
             
           
         }
@@ -28,20 +39,32 @@ namespace ProjectConfiguration
     }
      class EmailService
     {
-        static Server _Server;
+        static Server _Server;        
         
-        public void ConfigureMail(IConfiguration configuration)
+        public EmailService(IConfiguration configuration)
         {
-           // _Server = new Server(settings.SMTP, settings.POP);
+
+            _Server =   new  Server(
+                configuration.GetValue<string>("settings:mail:SMTP"),
+                configuration.GetValue<string>("settings:mail:POP")
+                ); 
+        }
+        public EmailService(IOptions<Settings> setting)
+        {
+
+            _Server = new Server(
+                setting.Value.mail.stmp,
+                setting.Value.mail.pop
+                );
         }
         public void SendMail(string Msg)
-        {
-            _Server.SendMail("Hello world!");
+        {   
+            _Server.SendMail($"Sending mail with \n {_Server._SMTP} and {_Server._POP} !");
         }
         class  Server
         {
-            string _POP;
-            string _SMTP;
+            public string _POP;
+            public string _SMTP;
             public Server(string SMTP, string POP)
             {
                 _POP = POP;
@@ -49,7 +72,7 @@ namespace ProjectConfiguration
             }
             public void SendMail(string Msg)
             {
-                Console.WriteLine($"Sending mail {Msg}"); 
+               /// Console.WriteLine($"Sending mail {Msg}"); 
             }
         }
     }
@@ -59,20 +82,21 @@ namespace ProjectConfiguration
     }
     public class Settings : ISettings
     {
-        public string SMTP { get; set; }
-        public string POP { get; set; }
-        public Settings(IConfiguration config)
+        public Social social { get; set; }
+        public Mail mail { get; set; }
+
+        public class Mail
         {
-            SMTP = config.GetValue<string>("settings:SMTP");   
-            POP = config.GetValue<string>("settings:POP"); 
-        } 
-        public void GetName()
-        {
-            Console.WriteLine($"SMTP: {SMTP}");
-            Console.WriteLine($"POP: {POP}");
+            public string stmp { get; set; }
+            public string pop { get; set; }
         }
-        
-        
+        public class Social
+        {
+            public string facebook { get; set; }
+            public string google { get; set; }
+        }
+
+
     }
 }
 
