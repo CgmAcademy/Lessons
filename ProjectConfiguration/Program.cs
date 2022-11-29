@@ -18,12 +18,15 @@ namespace ProjectConfiguration
 
 
             services.AddSingleton<Settings>(); // Add Settings as Singleton
-            services.AddTransient<EmailService>(); // Add Settings as Singleton
+            services.AddTransient<EmailService>(); // Add EmailService as Transient
 
             //config.Bind("mail");  // binding here 
             //config.Bind("social");
             //services.AddSingleton<IConfiguration>(config); // Add DI for IConfiguration as Singleton
 
+
+
+            //  add 'Settings' to the OptionConfigurationCollection to be injected into all classes 
             OptionsConfigurationServiceCollectionExtensions
               .Configure<Settings>(services, config.GetSection("settings"));
 
