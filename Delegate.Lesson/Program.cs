@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 
 namespace Delegate.Lesson
 {
@@ -160,3 +161,28 @@ namespace Delegate.Lesson
        }
     }
 
+class TimerDelegate
+{
+    static void SetTimer(string[] args)
+    {
+        Console.WriteLine("##### Working with TimerCallback Delegate #####\n");
+
+        // Create the delegate for the Timer type. 
+        TimerCallback timeCB = new TimerCallback(PrintTime);
+
+        // Configuring timer settings. 
+        Timer t = new Timer(
+                   timeCB,       // The TimerCallback delegate type.
+                   "Hi, Thanks",// Any info to pass into the method called.
+                     5000,        //  Time to wait before starting.
+                    5000);    // Interval of time between calls. 
+
+        Console.WriteLine("Press any key to terminate...");
+        Console.ReadLine();
+    }
+    static void PrintTime(object state)
+    {
+        Console.WriteLine("Time is: {0}, Parameter is: {1}",
+                         DateTime.Now.ToLongTimeString(), state.ToString());
+    }
+}
